@@ -1,22 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Critter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void GotHit()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("Mouse clicked on " + this.name);
-        }
+        Debug.Log($"{this.name} has been hit!");
     }
 }

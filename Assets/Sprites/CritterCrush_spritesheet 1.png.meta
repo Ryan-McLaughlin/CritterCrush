@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 080dd678cdc2781489b2808e60a9994c
+guid: 174f67ba77bb7544d8e8645b6ccaecaf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_0
+      name: CritterCrush_spritesheet 1_0
       rect:
         serializedVersion: 2
         x: 58
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d30241cb6fdf73429e8eda83f6aae71
-      internalID: -609572455
+      spriteID: fa861c08692d12243b3be03237abebfa
+      internalID: 500699945
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_1
+      name: CritterCrush_spritesheet 1_1
       rect:
         serializedVersion: 2
         x: 553
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f02f9eb29e782b64c9d6b554f7adf0a5
-      internalID: 1351647833
+      spriteID: 09994f31d32482547b7a93cddc7ada8b
+      internalID: 380531051
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_2
+      name: CritterCrush_spritesheet 1_2
       rect:
         serializedVersion: 2
         x: 1479
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 786f7f6b59a49b544893a63f0214bbaa
-      internalID: -445932182
+      spriteID: fa4305f0e9d87eb47a6b0b954f481bc7
+      internalID: -2096610030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_3
+      name: CritterCrush_spritesheet 1_3
       rect:
         serializedVersion: 2
         x: 2114
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d984b258cc6ca1148806e03bcf1ceb39
-      internalID: 323392665
+      spriteID: 4f69141008b0fe7448c4323a49a75756
+      internalID: -1897667004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_4
+      name: CritterCrush_spritesheet 1_4
       rect:
         serializedVersion: 2
         x: 0
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da13e341e10af1f4ba3f19e9835aa9c0
-      internalID: -545124744
+      spriteID: 9958f273ac514c34396428975035e943
+      internalID: 1522441493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_5
+      name: CritterCrush_spritesheet 1_5
       rect:
         serializedVersion: 2
         x: 2031
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a027e0738310276458c69efee6f58191
-      internalID: 282475621
+      spriteID: afcf7db7c70164942bf534aa67f715b3
+      internalID: -1092851838
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_6
+      name: CritterCrush_spritesheet 1_6
       rect:
         serializedVersion: 2
         x: 104
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7a0af9e8c8079d49bfc34a42e6de63a
-      internalID: -847558419
+      spriteID: 089b5ab864938f9489722803baa9709d
+      internalID: -1740521419
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_7
+      name: CritterCrush_spritesheet 1_7
       rect:
         serializedVersion: 2
         x: 621
@@ -271,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2aadba9b202fb104fa5aa9ec98cbcc50
-      internalID: 61245442
+      spriteID: 4cc26223f7d0ead4f8b400629024b562
+      internalID: -236211191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_8
+      name: CritterCrush_spritesheet 1_8
       rect:
         serializedVersion: 2
         x: 1120
@@ -292,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9773dc9b314f1f49885901385678e26
-      internalID: 68000725
+      spriteID: 435d2badd12b4e445979916f5032b76b
+      internalID: 265675957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_9
+      name: CritterCrush_spritesheet 1_9
       rect:
         serializedVersion: 2
         x: 58
@@ -313,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0fc7a1add0aad14090ee25e52a05f9c
-      internalID: -625231914
+      spriteID: b5bc20b09f8323d45bd357f86d039085
+      internalID: -768861687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_10
+      name: CritterCrush_spritesheet 1_10
       rect:
         serializedVersion: 2
         x: 56
@@ -334,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5406a612403de1a4a8bff32a0e5e986c
-      internalID: 1926565295
+      spriteID: dfb809d6b520df246bd8dafb7e7afd43
+      internalID: -1383896997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_11
+      name: CritterCrush_spritesheet 1_11
       rect:
         serializedVersion: 2
         x: 2150
@@ -355,14 +355,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e93becda79a840345ae39b0edd14746f
-      internalID: 774884293
+      spriteID: e6f5cc09cce72fd459a3055c3f6e4e92
+      internalID: 816976936
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_12
+      name: CritterCrush_spritesheet 1_12
       rect:
         serializedVersion: 2
         x: 2586
@@ -376,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abe0bae4b69196c498f5a567d91b996a
-      internalID: 2041299521
+      spriteID: 6d007729f7badbd49bc3338ab94af242
+      internalID: -1194236769
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_13
+      name: CritterCrush_spritesheet 1_13
       rect:
         serializedVersion: 2
         x: 2150
@@ -397,14 +397,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b90ce8dbc447d174284e7e15914cdc15
-      internalID: -1637963544
+      spriteID: 261560f5c1be96b4884f49b5c22f56b2
+      internalID: 1003705282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_14
+      name: CritterCrush_spritesheet 1_14
       rect:
         serializedVersion: 2
         x: 56
@@ -418,14 +418,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9a0a41b9eba903448eddb5b320c6cbb
-      internalID: -427468766
+      spriteID: cbdae894012a1364f8c4e25bc4ffad3b
+      internalID: -1395804213
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CritterCrush_spritesheet_15
+      name: CritterCrush_spritesheet 1_15
+      rect:
+        serializedVersion: 2
+        x: 2134
+        y: 865
+        width: 345
+        height: 397
+      alignment: 9
+      pivot: {x: 0.49810985, y: 0.09583426}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07ddc1da3d7070d44b32c63bc3fe732e
+      internalID: -2025627861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CritterCrush_spritesheet 1_16
       rect:
         serializedVersion: 2
         x: 58
@@ -439,8 +460,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df69e49ff8f6f554a9ac926cef071544
-      internalID: 584997770
+      spriteID: b787c179072a33f4b89fc3a8644022c0
+      internalID: -106562898
       vertices: []
       indices: 
       edges: []
@@ -456,22 +477,23 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      CritterCrush_spritesheet_0: -609572455
-      CritterCrush_spritesheet_1: 1351647833
-      CritterCrush_spritesheet_10: 1926565295
-      CritterCrush_spritesheet_11: 774884293
-      CritterCrush_spritesheet_12: 2041299521
-      CritterCrush_spritesheet_13: -1637963544
-      CritterCrush_spritesheet_14: -427468766
-      CritterCrush_spritesheet_15: 584997770
-      CritterCrush_spritesheet_2: -445932182
-      CritterCrush_spritesheet_3: 323392665
-      CritterCrush_spritesheet_4: -545124744
-      CritterCrush_spritesheet_5: 282475621
-      CritterCrush_spritesheet_6: -847558419
-      CritterCrush_spritesheet_7: 61245442
-      CritterCrush_spritesheet_8: 68000725
-      CritterCrush_spritesheet_9: -625231914
+      CritterCrush_spritesheet 1_0: 500699945
+      CritterCrush_spritesheet 1_1: 380531051
+      CritterCrush_spritesheet 1_10: -1383896997
+      CritterCrush_spritesheet 1_11: 816976936
+      CritterCrush_spritesheet 1_12: -1194236769
+      CritterCrush_spritesheet 1_13: 1003705282
+      CritterCrush_spritesheet 1_14: -1395804213
+      CritterCrush_spritesheet 1_15: -2025627861
+      CritterCrush_spritesheet 1_16: -106562898
+      CritterCrush_spritesheet 1_2: -2096610030
+      CritterCrush_spritesheet 1_3: -1897667004
+      CritterCrush_spritesheet 1_4: 1522441493
+      CritterCrush_spritesheet 1_5: -1092851838
+      CritterCrush_spritesheet 1_6: -1740521419
+      CritterCrush_spritesheet 1_7: -236211191
+      CritterCrush_spritesheet 1_8: 265675957
+      CritterCrush_spritesheet 1_9: -768861687
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

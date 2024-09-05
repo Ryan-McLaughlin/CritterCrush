@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4e89385cff364542bda3737b9784874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  critterTag: Critter
