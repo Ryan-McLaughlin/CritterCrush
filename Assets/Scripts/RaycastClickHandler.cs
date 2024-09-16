@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RaycastClickHandler : MonoBehaviour
-{    
+{
+    /*
     public string critterTag;
 
     void Update()
@@ -38,4 +39,5 @@ public class RaycastClickHandler : MonoBehaviour
             }
         }
     }
+    */
 }

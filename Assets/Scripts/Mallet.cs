@@ -1,80 +1,58 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Timers;
+//using System.Collections.Generic;
+//using System.Runtime.CompilerServices;
+//using System.Timers;
 using UnityEngine;
+//using System.Threading.Tasks;
 
 public class Mallet : MonoBehaviour
 {
-    public float rotationAngle = 90f;
-    public float rotationTime = 0.5f;
+    public float swingAngle;
+    public float swingTime;
+    public float timeToWait;
 
     private Quaternion initialRotation;
 
-    private bool rotateObjectOverTimeFinished = false;
+    private float waitTimer = 0f;
+
+    private bool isSwingComplete = false;
 
     private void Start()
     {
         initialRotation = transform.rotation;
-        StartCoroutine(RotateObjectOverTime());
-        //Swing();
+        StartCoroutine(Swing());
     }
 
-    IEnumerator RotateObjectOverTime()
+    IEnumerator Swing()
     {
-        // rotate to target rotation
-        float elapsedTime = 0f;
-        Quaternion targetRotation = initialRotation * Quaternion.Euler(0f, 0f, rotationAngle);
+        float swingTimer = 0f;
+        Quaternion targetRotation = initialRotation * Quaternion.Euler(0f, 0f, swingAngle);
 
-        while (elapsedTime < rotationTime)
+        while (swingTimer < swingTime)
         {
-            elapsedTime += Time.deltaTime;
-            transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsedTime / rotationTime);
-            rotateObjectOverTimeFinished = true;
+            // Rotate the mallet
+            transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, (swingTimer / swingTime));
+            swingTimer += Time.deltaTime;
+
+            // Pause execution of the coroutine and yield control back to main thread
             yield return null;
         }
 
-        // rotate back to initial rotation
-        //elapsedTime = 0f;
-        //targetRotation = initialRotation;
-
-        //while (elapsedTime < rotationTime)
-        //{
-        //    elapsedTime += Time.deltaTime;
-        //    transform.rotation = Quaternion.Slerp(targetRotation, initialRotation, elapsedTime / rotationTime);
-        //    yield return null;
-        //}
+        isSwingComplete = true;
     }
 
     private void Update()
     {
-        if (rotateObjectOverTimeFinished)
+        // Once swing is complete, wait, then destroy
+        if (isSwingComplete)
         {
-//            Debug.Log("rotateObjectOverTimeFinished finished");
+            waitTimer += Time.deltaTime;
+
+            Debug.Log($"waitTimer: {waitTimer} / {timeToWait}");
+            if (waitTimer >= timeToWait)
+            {
+                Destroy(this.gameObject);
+            }
         }
-    }
-
-    public void Swing()
-    {
-        //float elapsedTime = 0f;
-        //Quaternion targetRotation = initialRotation * Quaternion.Euler(0f, 0f, rotationAngle);
-
-        //while (elapsedTime < rotationTime)
-        //{
-        //    elapsedTime += Time.deltaTime;
-        //    transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, elapsedTime / rotationTime);
-        //}
-
-        //// isSwingFinished = true;
-    }
-
-    private void FaceCritter()
-    {
-
-    }
-
-    private void Rotate90()
-    {
-
     }
 }
