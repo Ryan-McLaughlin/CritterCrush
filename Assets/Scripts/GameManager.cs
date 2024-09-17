@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public CritterMover critterMover;
+    //public CritterMover critterMover;
 
     public GameObject critterPrefab;
     public GameObject malletPrefab;
@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
             // Perform a 2D raycast from the mouse position towards zero (no direction), store first hit
             RaycastHit2D raycastHit = Physics2D.Raycast(touchPosition, Vector2.zero);
 
+
             // Summon a mallet
             SummonMallet(touchPosition);
 
@@ -67,10 +68,11 @@ public class GameManager : MonoBehaviour
         // New critter
         if (Input.GetKeyDown(KeyCode.N))
         {
-            if (critterMovers[0].GetComponent<CritterMover>().IsVacant)
+            int rand = Random.Range(0, critterMovers.Length);
+            if (critterMovers[rand].GetComponent<CritterMover>().IsVacant)
             {
-                Debug.Log(critterMovers[0].GetComponent<CritterMover>().IsVacant);
-                critterMovers[0].GetComponent<CritterMover>().NewCritter(critterPrefab);
+                Debug.Log(critterMovers[rand].GetComponent<CritterMover>().IsVacant);
+                critterMovers[rand].GetComponent<CritterMover>().NewCritter(critterPrefab);
             }
 
             //critterMover.NewCritter(critterPrefab);

@@ -1260,6 +1260,10 @@ PrefabInstance:
       propertyPath: rightOffset
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: -8578875548762329405, guid: e6a23560a8f3cab4f92443b4881aba26, type: 3}
+      propertyPath: moveDirection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2909875779768457243, guid: e6a23560a8f3cab4f92443b4881aba26, type: 3}
       propertyPath: m_Name
       value: CM Trunk
