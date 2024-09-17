@@ -12,7 +12,7 @@ TagManager:
   - Critter
   - Water
   - UI
-  - 
+  - Environment
   - 
   - 
   - 
@@ -41,4 +41,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Environment
+    uniqueID: 573887593
     locked: 0

@@ -49,48 +49,17 @@ public class CritterMover: MonoBehaviour
     //[SerializeField] private float moveTotalTime;
 
     private GameObject critter;
-    private Vector2 startPosition;
+    [SerializeField] private GameObject startPosition;
     [SerializeField] private GameObject endPosition;
+
+    [SerializeField] private int layerOrder;
 
     private void Awake()
     {
-        /*
-        directionAllowed[0] = up;
-        directionAllowed[1] = down;
-        directionAllowed[2] = left;
-        directionAllowed[3] = right;
-        */
-
         isVacant = true;
 
-        startPosition = new Vector2(this.transform.position.x, this.transform.position.y);
-
-        //NewEndPosition();
-        //endPosition = new Vector2(this.transform.position.x + xOffset, this.transform.position.y + yOffset);
+        //startPosition = new Vector2(this.transform.position.x, this.transform.position.y);
     }
-
-    /*
-    private void NewEndPosition() {
-        switch(moveDirection) {
-            case MoveDirection.Up:
-                endPosition = new Vector2(this.transform.position.x, this.transform.position.y + offset);
-                break;
-
-            case MoveDirection.Down:
-                endPosition = new Vector2(this.transform.position.x, this.transform.position.y + offset);
-                break;
-
-            case (MoveDirection.Left):
-                endPosition = new Vector2(this.transform.position.x + offset, this.transform.position.y);
-                break;
-
-            case MoveDirection.Right:
-                endPosition = new Vector2(this.transform.position.x + offset, this.transform.position.y);
-                break;
-
-        }
-    }
-    */
 
     private void Update()
     {
@@ -102,39 +71,17 @@ public class CritterMover: MonoBehaviour
         }
 
         elapsedTime += Time.deltaTime;
-        // Move Critter
+
         MoveCritter();
-
-        // Verify the Critter can move in the chosen direction
-        /*
-        bool directionOk = false;
-        while(!directionOk) {
-            int roll = Random.Range(0, 4);
-
-            // Move Critter in chosen direction
-            if(directionAllowed[roll]) {
-                if(movingToEnd) {
-                    // Move critter to end position
-                    critter.transform.position = Vector2.Lerp(startPosition, endPosition, (elapsedTime / duration));
-                    if(elapsedTime >= duration) {
-                        movingToEnd = false;
-                        elapsedTime = 0f;
-                    }
-                } else {
-                    // Move critter to start position
-                    critter.transform.position = Vector3.Lerp(endPosition, startPosition, (elapsedTime / duration));
-                    if(elapsedTime >= duration) {
-                        movingToEnd = true;
-                        elapsedTime = 0f;
-                    }
-                }
-                directionOk = true;
-            }
-        */
-
     }
 
-    public void NewCritter(GameObject critterPrefab)
+    /// <summary>
+    /// Instantiates multiple critter prefabs at random positions within a specified area.
+    /// </summary>
+    /// <param name="critterPrefab">The prefab of the critter to instantiate.</param>
+    /// <param name="number">A string representing the number of critters to instantiate.</param>
+
+    public bool NewCritter(GameObject critterPrefab, string number)
     {
         if(critter == null)
         {
@@ -143,10 +90,15 @@ public class CritterMover: MonoBehaviour
 
             // Set Critter sorting order to one less than this
             critter = Instantiate(critterPrefab, this.transform.position, Quaternion.identity);
-            critter.GetComponent<SpriteRenderer>().sortingOrder = this.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+            critter.GetComponent<SpriteRenderer>().sortingOrder = layerOrder;// this.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+            critter.transform.SetParent(this.transform);
+            critter.name= $"{critterPrefab.name} {number}";
+
+            return true;
         } else
         {
-            Debug.Log("CritterMover.NewCritter(): critter != null");
+            //Debug.Log("CritterMover.NewCritter(): critter != null");
+            return false;
         }
     }
 
@@ -155,7 +107,7 @@ public class CritterMover: MonoBehaviour
         if(movingToEnd)
         {
             // Move critter to end position
-            critter.transform.position = Vector2.Lerp(startPosition, endPosition.transform.position, (elapsedTime / duration));
+            critter.transform.position = Vector2.Lerp(startPosition.transform.position, endPosition.transform.position, (elapsedTime / duration));
             if(elapsedTime >= duration)
             {
                 movingToEnd = false;
@@ -164,23 +116,12 @@ public class CritterMover: MonoBehaviour
         } else
         {
             // Move critter to start position
-            critter.transform.position = Vector3.Lerp(endPosition.transform.position, startPosition, (elapsedTime / duration));
+            critter.transform.position = Vector3.Lerp(endPosition.transform.position, startPosition.transform.position, (elapsedTime / duration));
             if(elapsedTime >= duration)
             {
                 movingToEnd = true;
                 elapsedTime = 0f;
             }
         }
-    }
-
-    /*
-    void NewEndPosition(float x, float y) {
-        endPosition = new Vector2(x, y);
-    }
-    */
-
-    private void ChooseDirection()
-    {
-        Debug.Log($"CritterMover.ChooseDirection()");
     }
 }
