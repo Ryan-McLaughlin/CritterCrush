@@ -48,7 +48,7 @@ public class Mallet : MonoBehaviour
         {
             waitTimer += Time.deltaTime;
 
-            Debug.Log($"waitTimer: {waitTimer} / {timeToWait}");
+            //Debug.Log($"waitTimer: {waitTimer} / {timeToWait}");
             if (waitTimer >= timeToWait)
             {
                 Destroy(this.gameObject);

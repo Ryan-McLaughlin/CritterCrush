@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 // creates critters
 // sends critters to critter movers
 // tracks active critters / critter movers
-
-
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject malletPrefab;
 
     public GameObject[] critterMovers;
+
+    public TextMeshProUGUI tmpCrushed;
 
     [SerializeField] private string critterTag;
     [SerializeField] private float malletXOffset;
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Debug.Log($"{this.name}.Update()");
+        tmpCrushed.text = $"CRUSHED: {critterHits}";
 
         // Get mouse down        
         if (Input.GetMouseButtonDown(0))
@@ -57,8 +59,8 @@ public class GameManager : MonoBehaviour
             if (raycastHit.collider != null && raycastHit.collider.gameObject.tag == critterTag)
             {
                 CrushCritter(raycastHit);
-                critterHits++;
-                Debug.Log($"Critter hits: {critterHits}");
+                critterHits++;                
+                //Debug.Log($"Critter hits: {critterHits}");
             }
         }
 
