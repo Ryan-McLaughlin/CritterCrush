@@ -17,5 +17,6 @@ public class LineRendererScript: MonoBehaviour
     {
         lineRenderer.SetPosition(0, startObject.transform.position);
         lineRenderer.SetPosition(1, endObject.transform.position);
+
     }
 }

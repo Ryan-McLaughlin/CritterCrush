@@ -90,7 +90,7 @@ public class CritterMover: MonoBehaviour
 
             // Set Critter sorting order to one less than this
             critter = Instantiate(critterPrefab, this.transform.position, Quaternion.identity);
-            critter.GetComponent<SpriteRenderer>().sortingOrder = layerOrder;// this.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
+            critter.GetComponent<SpriteRenderer>().sortingOrder = layerOrder - 1;// this.gameObject.GetComponent<SpriteRenderer>().sortingOrder;
             critter.transform.SetParent(this.transform);
             critter.name= $"{critterPrefab.name} {number}";
 

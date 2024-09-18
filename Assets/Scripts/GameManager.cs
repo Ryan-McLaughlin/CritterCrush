@@ -32,7 +32,10 @@ public class GameManager: MonoBehaviour
 
     void Update()
     {
-        tmpCrushed.text = $"CRUSHED: {critterCrushed}";
+        tmpCrushed.text = $"Crushes: {critterCrushed}\n" +
+                          $"Combo: \n" +
+                          $"Misses: \n" +
+                          $"Miss Combo: ";
 
         // New critter
         if(Input.GetKeyDown(KeyCode.N))
