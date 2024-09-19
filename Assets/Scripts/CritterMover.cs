@@ -18,6 +18,10 @@ public class CritterMover: MonoBehaviour
 
     [SerializeField] private int layerOrder;
 
+    [SerializeField] private int maxTrips;
+
+    private int tripCounter;
+
     private bool movingToEnd;
     private bool isVacant;
 
@@ -28,6 +32,7 @@ public class CritterMover: MonoBehaviour
     {
         isVacant = true;
         critterHolder = GameObject.Find("Critter Holder");
+        tripCounter = 0;
     }
 
     private void Update()
@@ -56,6 +61,8 @@ public class CritterMover: MonoBehaviour
         {
             // Reset movement timer
             traverseTimer = 0f;
+            // Reset trip counter
+            tripCounter = 0;
 
             // Instantiate critter
             critter = Instantiate(critterPrefab, this.transform.position, Quaternion.identity);
@@ -93,8 +100,17 @@ public class CritterMover: MonoBehaviour
     /// </summary>
     private void MoveCritter()
     {
+        // Move critter to end position
         if(movingToEnd)
         {
+            //Debug.Log($"cm.movecritter() trip counter / maxTrips: {tripCounter} / {maxTrips}");
+
+            // Check if critter escaped
+            if(tripCounter > maxTrips)
+            {
+                CritterEscape();
+            }
+
             // Move critter to end position
             critter.transform.position = Vector2.Lerp(startPosition.transform.position, endPosition.transform.position, (traverseTimer / traverseDuration));
             if(traverseTimer >= traverseDuration)
@@ -103,15 +119,22 @@ public class CritterMover: MonoBehaviour
                 traverseTimer = 0f;
             }
         }
+        // Move critter to start position
         else
         {
-            // Move critter to start position
             critter.transform.position = Vector3.Lerp(endPosition.transform.position, startPosition.transform.position, (traverseTimer / traverseDuration));
             if(traverseTimer >= traverseDuration)
             {
                 movingToEnd = true;
                 traverseTimer = 0f;
+                tripCounter++;
             }
         }
+    }
+
+    private void CritterEscape()
+    {
+        // Game manager is notified of escape by the critter that escaped
+        critter.GetComponent<Critter>().Escape();
     }
 }

@@ -6,22 +6,26 @@ using UnityEngine;
 
 public class Critter : MonoBehaviour
 {
-    // maybe rename to DeadFishCritter, the critter mover handles movement
-    // have ActiveCritter move itself
+    GameManager gameManager;
 
-    // public GameObject gameObject;
-    public int health;
-
-    public void GotHit()
+    private void Awake()
     {
-        Debug.Log($"{this.name} has been hit!");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void Crush()
     {
         // summon the poof animation
-        // delete this
         Debug.Log($"Critter.Crush(): {this.name} has been Crushed!");
+        // tell GM it was crushed?
+        Destroy(this.gameObject);
+    }
+
+    public void Escape()
+    {
+        Debug.Log($"Critter.Escape(): {this.name} has Escaped!");
+
+        gameManager.CritterEscaped();// this.name );
         Destroy(this.gameObject);
     }
 }

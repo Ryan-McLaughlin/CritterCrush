@@ -7,17 +7,14 @@ public class GameManager: MonoBehaviour
 {
     public static GameManager Instance;
 
-    //public CritterMover critterMover;
-
     public GameObject critterPrefab;
     public GameObject malletPrefab;
 
     public GameObject[] critterMovers;
 
     [SerializeField] TextMeshProUGUI textCrushes;
-    //[SerializeField] TextMeshProUGUI textCrushCombo;
     [SerializeField] TextMeshProUGUI textMisses;
-    //[SerializeField] TextMeshProUGUI textMissCombo;
+    [SerializeField] TextMeshProUGUI textEscapes;
 
     [SerializeField] private string critterTag;
     [SerializeField] private float malletXOffset;
@@ -28,6 +25,8 @@ public class GameManager: MonoBehaviour
     private int crushComboCounter = 0;
     private int missCounter = 0;
     private int missComboCounter = 0;
+    private int escapeCounter = 0;
+    private int escapeComboCounter = 0;
 
     void Awake()
     {
@@ -42,6 +41,7 @@ public class GameManager: MonoBehaviour
         // Update GUI
         textCrushes.text = $"Crushes: {crushCounter}\n" + $"Crush Combo: {crushComboCounter}";
         textMisses.text = $"Misses: {missCounter}\n" + $"Miss Combo: {missComboCounter}";
+        textEscapes.text = $"Escapes: {escapeCounter}\n" + $"Escape Combo: {escapeComboCounter}";
 
         // New critter
         if(Input.GetKeyDown(KeyCode.N))
@@ -58,6 +58,7 @@ public class GameManager: MonoBehaviour
         // Summon a mallet at the mouse position
         if(Input.GetMouseButtonDown(0))
         {
+            // TODO: check if missed
             SummonMallet(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
     }
@@ -95,7 +96,6 @@ public class GameManager: MonoBehaviour
         if(topmostCollider != null && topmostCollider.gameObject.tag == critterTag)
         {
             CrushCritter(topmostCollider);
-            crushCounter++;
         }
     }
 
@@ -135,9 +135,23 @@ public class GameManager: MonoBehaviour
     /// <param name="collider">The Collider2D component representing the collided critter.</param>
     private void CrushCritter(Collider2D collider)
     {
-        Debug.Log($"GameManager.CheckCritterHit() hit.name, tag: {collider.transform.name}, {collider.gameObject.tag}");
+        Debug.Log($"GameManager.CrushCritter(): {collider.transform.name}");
+        
         Critter critter = collider.GetComponent<Critter>();
+        
+        crushCounter++;
         critter.Crush();
+    }
+
+    /// <summary>
+    /// Called when a critter escapes. Called by the escaping critter.
+    /// </summary>
+    /// <param name="critter">The GameObject representing the escaped critter.</param>
+    public void CritterEscaped()//string critterName)
+    {
+        //Debug.Log($"GM.CritterEscaped(): {critterName}");
+                
+        escapeCounter++;
     }
 
 }

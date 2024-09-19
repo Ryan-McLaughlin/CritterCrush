@@ -48,10 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: {fileID: 9139018105722945075}
   endPosition: {fileID: 3779752013016275030}
-  BASE_TRAVERSE: 0.8
+  BASE_TRAVERSE: 0.7
   traverseVariance: 0.125
   critterSizeVariance: 0.05
   layerOrder: 100
+  maxTrips: 2
 --- !u!1 &3779752013016275030
 GameObject:
   m_ObjectHideFlags: 0
@@ -68,7 +69,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2394095055167071401
 Transform:
   m_ObjectHideFlags: 0
@@ -124,7 +125,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -152,7 +153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4430759247754677993
 Transform:
   m_ObjectHideFlags: 0
