@@ -46,10 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50272c251ff900a44ba8e5ce8b5ad698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.65
   startPosition: {fileID: 9139018105722945075}
   endPosition: {fileID: 3779752013016275030}
-  layerOrder: 0
+  BASE_TRAVERSE: 0.8
+  traverseVariance: 0.125
+  critterSizeVariance: 0.05
+  layerOrder: 100
 --- !u!1 &3779752013016275030
 GameObject:
   m_ObjectHideFlags: 0
@@ -66,7 +68,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2394095055167071401
 Transform:
   m_ObjectHideFlags: 0
@@ -150,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4430759247754677993
 Transform:
   m_ObjectHideFlags: 0

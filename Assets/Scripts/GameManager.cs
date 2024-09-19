@@ -14,13 +14,20 @@ public class GameManager: MonoBehaviour
 
     public GameObject[] critterMovers;
 
-    public TextMeshProUGUI tmpCrushed;
+    [SerializeField] TextMeshProUGUI textCrushes;
+    //[SerializeField] TextMeshProUGUI textCrushCombo;
+    [SerializeField] TextMeshProUGUI textMisses;
+    //[SerializeField] TextMeshProUGUI textMissCombo;
 
     [SerializeField] private string critterTag;
     [SerializeField] private float malletXOffset;
 
-    private int critterCrushed = 0;
     private int crittersSummoned = 0;
+
+    private int crushCounter = 0;
+    private int crushComboCounter = 0;
+    private int missCounter = 0;
+    private int missComboCounter = 0;
 
     void Awake()
     {
@@ -33,7 +40,8 @@ public class GameManager: MonoBehaviour
     void Update()
     {
         // Update GUI
-        tmpCrushed.text = $"Crushes: {critterCrushed}\n" + $"Combo: \n" + $"Misses: \n" + $"Miss Combo: ";
+        textCrushes.text = $"Crushes: {crushCounter}\n" + $"Crush Combo: {crushComboCounter}";
+        textMisses.text = $"Misses: {missCounter}\n" + $"Miss Combo: {missComboCounter}";
 
         // New critter
         if(Input.GetKeyDown(KeyCode.N))
@@ -87,7 +95,7 @@ public class GameManager: MonoBehaviour
         if(topmostCollider != null && topmostCollider.gameObject.tag == critterTag)
         {
             CrushCritter(topmostCollider);
-            critterCrushed++;
+            crushCounter++;
         }
     }
 
