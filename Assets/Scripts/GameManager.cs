@@ -32,58 +32,99 @@ public class GameManager: MonoBehaviour
 
     void Update()
     {
-        tmpCrushed.text = $"Crushes: {critterCrushed}\n" +
-                          $"Combo: \n" +
-                          $"Misses: \n" +
-                          $"Miss Combo: ";
+        // Update GUI
+        tmpCrushed.text = $"Crushes: {critterCrushed}\n" + $"Combo: \n" + $"Misses: \n" + $"Miss Combo: ";
 
         // New critter
         if(Input.GetKeyDown(KeyCode.N))
         {
-            int rand = Random.Range(0, critterMovers.Length);
-            if(critterMovers[rand].GetComponent<CritterMover>().IsVacant)
+            NewCritter();
+        }
+
+        // New critter for all
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            NewCritterAll();
+        }
+
+        // Summon a mallet at the mouse position
+        if(Input.GetMouseButtonDown(0))
+        {
+            SummonMallet(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
+    }
+
+    /// <summary>
+    /// Instantiates a mallet prefab at a specified world position, considering the topmost collider at that point.
+    /// </summary>
+    /// <param name="worldPoint">The world position where the mallet should be summoned.</param>
+    private void SummonMallet(Vector2 worldPoint)
+    {
+        // Get the mouse position in world coordinates
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+
+        Vector2 summonPosition = new Vector2(worldPoint.x + malletXOffset, worldPoint.y);
+        GameObject mallet = Instantiate(malletPrefab, summonPosition, Quaternion.identity);
+
+        // Get all colliders at the mouse position
+        Collider2D[] colliders = Physics2D.OverlapPointAll(mousePos);
+
+        // Find the collider with the highest sorting order
+        Collider2D topmostCollider = null;
+        int topmostSortingOrder = int.MinValue;
+        foreach(Collider2D collider in colliders)
+        {
+            SpriteRenderer spriteRenderer = collider.GetComponent<SpriteRenderer>();
+            if(spriteRenderer != null && spriteRenderer.sortingOrder > topmostSortingOrder)
             {
-                if(critterMovers[rand].GetComponent<CritterMover>().NewCritter(critterPrefab, crittersSummoned.ToString()))
-                {
-                    crittersSummoned++;
-                }
+                topmostCollider = collider;
+                topmostSortingOrder = spriteRenderer.sortingOrder;
             }
         }
 
-        // Get mouse down        
-        if(Input.GetMouseButtonDown(0))
+        // If a topmost collider was found and topmost collider is a critter
+        if(topmostCollider != null && topmostCollider.gameObject.tag == critterTag)
         {
-            // Get the mouse position in world coordinates
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            CrushCritter(topmostCollider);
+            critterCrushed++;
+        }
+    }
 
-            // Summon a mallet
-            SummonMallet(mousePos);
+    /// <summary>
+    /// Attempts to instantiate a new critter at a random vacant mover position.
+    /// </summary>
+    private void NewCritter()
+    {
 
-            // Get all colliders at the mouse position
-            Collider2D[] colliders = Physics2D.OverlapPointAll(mousePos);
-
-            // Find the collider with the highest sorting order
-            Collider2D topmostCollider = null;
-            int topmostSortingOrder = int.MinValue;
-            foreach(Collider2D collider in colliders)
+        int rand = Random.Range(0, critterMovers.Length);
+        if(critterMovers[rand].GetComponent<CritterMover>().IsVacant)
+        {
+            if(critterMovers[rand].GetComponent<CritterMover>().NewCritter(critterPrefab, crittersSummoned.ToString()))
             {
-                SpriteRenderer spriteRenderer = collider.GetComponent<SpriteRenderer>();
-                if(spriteRenderer != null && spriteRenderer.sortingOrder > topmostSortingOrder)
-                {
-                    topmostCollider = collider;
-                    topmostSortingOrder = spriteRenderer.sortingOrder;
-                }
-            }
-
-            // If a topmost collider was found and topmost collider is a critter
-            if(topmostCollider != null && topmostCollider.gameObject.tag == critterTag)
-            {
-                CrushCritter(topmostCollider);
-                critterCrushed++;
+                crittersSummoned++;
             }
         }
     }
 
+    /// <summary>
+    /// Attempts to instantiate a new critter at every vacant mover position.
+    /// </summary>
+    private void NewCritterAll()
+    {
+        foreach(GameObject cm in critterMovers)
+        {
+            if(cm.GetComponent<CritterMover>().NewCritter(critterPrefab, crittersSummoned.ToString()))
+            {
+                crittersSummoned++;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Handles a critter collision by logging information and calling the critter's Crush() method.
+    /// </summary>
+    /// <param name="collider">The Collider2D component representing the collided critter.</param>
     private void CrushCritter(Collider2D collider)
     {
         Debug.Log($"GameManager.CheckCritterHit() hit.name, tag: {collider.transform.name}, {collider.gameObject.tag}");
@@ -91,9 +132,4 @@ public class GameManager: MonoBehaviour
         critter.Crush();
     }
 
-    private void SummonMallet(Vector2 worldPoint)
-    {
-        Vector2 summonPosition = new Vector2(worldPoint.x + malletXOffset, worldPoint.y);
-        GameObject mallet = Instantiate(malletPrefab, summonPosition, Quaternion.identity);
-    }
 }
