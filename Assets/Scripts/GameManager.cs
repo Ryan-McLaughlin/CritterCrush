@@ -71,17 +71,38 @@ public class GameManager: MonoBehaviour
     }
     */
 
+    public Button playButton;
+    public Button pauseButton;
+
     void Update()
     {
         // Pause
         if(Input.GetKeyDown(KeyCode.P))
         {
-            isPaused = !isPaused;
+            isPaused = !isPaused;                        
         }
 
-        // Check if paused
-        if(isPaused) { Time.timeScale = 0f; return; }
-        else { Time.timeScale = 1f; }
+        // When paused
+        if(isPaused)
+        {
+            // Enable play button, disable pause button
+            playButton.enabled = true;
+            pauseButton.enabled = false;            
+
+            // Stop game time
+            Time.timeScale = 0f;
+            return;
+        }
+        // When not paused
+        else
+        {
+            // Enable pause button, disable play button
+            pauseButton.enabled = true;
+            playButton.enabled = false;
+
+            // Restart game time
+            Time.timeScale = 1f;
+        }
 
         // Update GUI
         textCrushes.text = $"Crushes: {crushCounter}\n"
