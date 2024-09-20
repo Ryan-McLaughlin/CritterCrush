@@ -14,3 +14,7 @@ This project would not have been possible without the contributions of the follo
 - **Gemini** - Generated various game 2D elements; Helped with general development.
 
 [Gemini](https://gemini.google.com/app)
+
+[Gemini](https://gemini.google.com/app target="\_blank")
+
+[Gemini](https://gemini.google.com/app){:target="\_blank"}
