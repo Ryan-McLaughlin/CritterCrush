@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: {fileID: 9139018105722945075}
   endPosition: {fileID: 3779752013016275030}
+  isCritterInvertX: 0
+  isCritterInvertY: 0
   BASE_TRAVERSE: 0.7
   traverseVariance: 0.125
   critterSizeVariance: 0.05

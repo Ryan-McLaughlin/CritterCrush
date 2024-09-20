@@ -9,6 +9,9 @@ public class CritterMover: MonoBehaviour
     private GameObject critter;
     private GameObject critterHolder;
 
+    [SerializeField] private bool isCritterInvertX;
+    [SerializeField] private bool isCritterInvertY;
+
     [SerializeField] private float BASE_TRAVERSE;
     private float traverseDuration;
     [SerializeField] private float traverseVariance;
@@ -33,6 +36,11 @@ public class CritterMover: MonoBehaviour
         isVacant = true;
         critterHolder = GameObject.Find("Critter Holder");
         tripCounter = 0;
+
+        //this.transform.GetComponentInChildren<Renderer>().enabled = false;
+        // Turn off the critter movers start and end 
+        this.transform.GetChild(0).gameObject.SetActive(false);
+        this.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     private void Update()
@@ -54,7 +62,6 @@ public class CritterMover: MonoBehaviour
     /// </summary>
     /// <param name="critterPrefab">The prefab of the critter to instantiate.</param>
     /// <param name="number">A string representing the number (id) of the critter to instantiate.</param>
-
     public bool NewCritter(GameObject critterPrefab, string number)
     {
         if(critter == null)
@@ -77,7 +84,11 @@ public class CritterMover: MonoBehaviour
             critter.transform.localScale = new Vector2(scale, scale);
 
             // Set Critter sorting order to one less than this
-            critter.GetComponent<SpriteRenderer>().sortingOrder = layerOrder - 1;
+            SpriteRenderer sr = critter.GetComponent<SpriteRenderer>();
+            //critter.GetComponent<SpriteRenderer>().sortingOrder = layerOrder - 1;
+            sr.sortingOrder = layerOrder - 1;
+            sr.flipX = isCritterInvertX;
+            sr.flipY = isCritterInvertY;
 
             // Set critter parent in scene
             critter.transform.SetParent(critterHolder.transform);
