@@ -15,13 +15,13 @@ public class GameManager: MonoBehaviour
 
     public GameObject[] critterMovers;
 
-    public bool isPaused = false;
+    //public bool isPaused = false;
 
-    [SerializeField] TextMeshProUGUI textCrushes;
-    [SerializeField] TextMeshProUGUI textMisses;
-    [SerializeField] TextMeshProUGUI textEscapes;
+    public TextMeshProUGUI textCrushes;
+    public TextMeshProUGUI textMisses;
+    public TextMeshProUGUI textEscapes;
 
-    [SerializeField] private string critterTag;
+    public string critterTag;
     [SerializeField] private float malletXOffset;
 
     [SerializeField] private float newCritterAlarm;
@@ -76,6 +76,11 @@ public class GameManager: MonoBehaviour
 
     void Update()
     {
+        if(PauseMenu.isPaused)
+        {
+            return;
+        }
+        /*
         // Pause
         if(Input.GetKeyDown(KeyCode.P))
         {
@@ -86,8 +91,8 @@ public class GameManager: MonoBehaviour
         if(isPaused)
         {
             // Enable play button, disable pause button
-            playButton.enabled = true;
-            pauseButton.enabled = false;            
+            //playButton.enabled = true;
+            //pauseButton.enabled = false;            
 
             // Stop game time
             Time.timeScale = 0f;
@@ -97,13 +102,13 @@ public class GameManager: MonoBehaviour
         else
         {
             // Enable pause button, disable play button
-            pauseButton.enabled = true;
-            playButton.enabled = false;
+            //pauseButton.enabled = true;
+            //playButton.enabled = false;
 
             // Restart game time
             Time.timeScale = 1f;
         }
-
+        */
         // Update GUI
         textCrushes.text = $"Crushes: {crushCounter}\n"
                          + $"Crush Combo: {crushComboCounter}\n"
