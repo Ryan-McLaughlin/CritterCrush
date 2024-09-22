@@ -122,6 +122,7 @@ public class GameManager: MonoBehaviour
                          + $"Escape Combo: {escapeComboCounter}\n"
                          + $"Best Escape Combo: {bestEscapeCombo}";
 
+
         // Summon a mallet at the mouse position
         if(Input.GetMouseButtonDown(0))
         {
