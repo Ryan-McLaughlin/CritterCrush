@@ -15,6 +15,7 @@ public class PauseMenu: MonoBehaviour
 
     private void Update()
     {
+        /*
         if(Input.GetKeyDown(KeyCode.P))
         {
             if(isPaused)
@@ -26,6 +27,7 @@ public class PauseMenu: MonoBehaviour
                 PauseGame();
             }
         }
+        */
     }
 
     public void PauseGame()
