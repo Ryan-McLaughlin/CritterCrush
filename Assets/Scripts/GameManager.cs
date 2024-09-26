@@ -1,9 +1,12 @@
+using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager: MonoBehaviour
 {
+    //public InputAction playerControls;
+
     public static GameManager Instance;
 
     public GameObject[] critterPrefab;
@@ -16,6 +19,8 @@ public class GameManager: MonoBehaviour
     public TextMeshProUGUI textCrushes;
     public TextMeshProUGUI textMisses;
     public TextMeshProUGUI textEscapes;
+
+    public TextMeshProUGUI textLog;
 
     public string critterTag;
     [SerializeField] private float malletXOffset;
@@ -37,7 +42,7 @@ public class GameManager: MonoBehaviour
     private int bestEscapeCombo = 0;
 
     //Dropdown dropdownCritter;
-    [SerializeField] bool debugging = false;
+    //[SerializeField] bool debugging = false;
 
     void Awake()
     {
@@ -67,8 +72,8 @@ public class GameManager: MonoBehaviour
     }
     */
 
-    public Button playButton;
-    public Button pauseButton;
+    //public Button playButton;
+    //public Button pauseButton;
 
     void Update()
     {
@@ -117,9 +122,10 @@ public class GameManager: MonoBehaviour
         textEscapes.text = $"Escapes: {escapeCounter}\n"
                          + $"Escape Combo: {escapeComboCounter}\n"
                          + $"Best Escape Combo: {bestEscapeCombo}";
-        
+        /*
         if(Input.touchCount > 0)
         {
+            Debug.Log("Input.touchCount > 0");
             Touch touch = Input.GetTouch(0);
 
             if(touch.phase == TouchPhase.Began)
@@ -132,9 +138,11 @@ public class GameManager: MonoBehaviour
 
                 // Summon the mallet at the world position
                 SummonMallet(worldPosition);
+
+                Debug.Log("Touch detected at: " + worldPosition);
             }
         }
-
+        */
         /*/ Summon a mallet at the mouse position
         if(Input.GetMouseButtonDown(0))
         {
@@ -142,6 +150,7 @@ public class GameManager: MonoBehaviour
             SummonMallet(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
         */
+        
 
         newCritterTimer += Time.deltaTime;
         // Time for new critter
@@ -202,6 +211,15 @@ public class GameManager: MonoBehaviour
         */
         #endregion Debugging
     }
+    public void Click(Vector2 worldPoint)
+    {
+        SummonMallet(worldPoint);
+    }
+
+    public void Hit(Collider2D collider)
+    {
+        textLog.text = $"GM.Hit() colliderName: {collider.name}";
+    }
 
     /// <summary>
     /// Instantiates a mallet prefab at a specified world position, considering the topmost collider at that point.
@@ -215,7 +233,7 @@ public class GameManager: MonoBehaviour
         Vector2 summonPosition = new Vector2(worldPoint.x + malletXOffset, worldPoint.y);
         GameObject mallet = Instantiate(malletPrefab, summonPosition, Quaternion.identity);
 
-        // Get all colliders at the mouse position
+        // Get all colliders at the world point
         Collider2D[] colliders = Physics2D.OverlapPointAll(worldPoint);
 
         // Find the collider with the highest sorting order
