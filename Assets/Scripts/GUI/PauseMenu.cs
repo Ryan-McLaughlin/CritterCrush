@@ -10,7 +10,9 @@ public class PauseMenu: MonoBehaviour
 
     private void Start()
     {
+        pauseMenu.SetActive(true);
         pauseMenu.SetActive(false);
+        isPaused = false;
     }
 
     private void Update()
@@ -33,12 +35,12 @@ public class PauseMenu: MonoBehaviour
     public void PauseGame()
     {
         //Physics.pausePhysics = true;
-        
+
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }
-    
+
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
