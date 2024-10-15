@@ -5,28 +5,31 @@ using UnityEngine.UI;
 
 public class GameManager: MonoBehaviour
 {
+    // This
     public static GameManager Instance;
 
+    // Prefabs
     public GameObject[] critterPrefab;
     public GameObject malletPrefab;
 
     public GameObject[] critterMovers;
 
+    // GUI
     public TextMeshProUGUI textCrushes;
     public TextMeshProUGUI textMisses;
     public TextMeshProUGUI textEscapes;
-
     public TextMeshProUGUI textLog;
 
     public string critterTag;
+        
     [SerializeField] private float malletXOffset;
-
     [SerializeField] private float newCritterAlarm;
     [SerializeField] private float newCritterAlarmOffset;
-    float newCritterTimer;
+    private float newCritterTimer;
 
+
+    // Counters
     private int crittersSummoned = 0;
-
     private int crushCounter = 0;
     private int crushComboCounter = 0;
     private int bestCrushCombo = 0;
@@ -116,12 +119,14 @@ public class GameManager: MonoBehaviour
         }
         */
         /*/ Summon a mallet at the mouse position
+         * switch to input system package in player settings
         if(Input.GetMouseButtonDown(0))
         {
             // TODO: check if missed
             SummonMallet(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
         */
+        
         
 
         newCritterTimer += Time.deltaTime;
@@ -183,6 +188,7 @@ public class GameManager: MonoBehaviour
         */
         #endregion Debugging
     }
+
     public void Click(Vector2 worldPoint)
     {
         SummonMallet(worldPoint);
@@ -282,6 +288,7 @@ public class GameManager: MonoBehaviour
         }
     }
     */
+
     private void MalletMissed()
     {
         missCounter++;
