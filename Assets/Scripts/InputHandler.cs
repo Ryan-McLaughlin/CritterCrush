@@ -23,9 +23,7 @@ public class InputHandler: MonoBehaviour
         gameManager.Click(rayHit.point);
         gameManager.Hit(rayHit.collider);
         
-
         if(!rayHit.collider) { return; }
-
 
         Debug.Log(rayHit.collider.gameObject.name);
     }

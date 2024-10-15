@@ -5,16 +5,12 @@ using UnityEngine.UI;
 
 public class GameManager: MonoBehaviour
 {
-    //public InputAction playerControls;
-
     public static GameManager Instance;
 
     public GameObject[] critterPrefab;
     public GameObject malletPrefab;
 
     public GameObject[] critterMovers;
-
-    //public bool isPaused = false;
 
     public TextMeshProUGUI textCrushes;
     public TextMeshProUGUI textMisses;
@@ -41,39 +37,13 @@ public class GameManager: MonoBehaviour
     private int escapeComboCounter = 0;
     private int bestEscapeCombo = 0;
 
-    //Dropdown dropdownCritter;
-    //[SerializeField] bool debugging = false;
-
     void Awake()
     {
-        //DebugPanel();
-
         if(Instance == null)
         {
             Instance = this;
         }
     }
-
-    /*
-    void DebugPanel()
-    {
-        List<string> names = new List<string>();
-        //dropdownCritter = FindObjectOfType<Dropdown>();
-        //dropdownCritter = FindObjectOfType<Dropdown>(name: "Dropdown Critter");
-        dropdownCritter = GameObject.Find("Dropdown Critter").GetComponent<Dropdown>();
-
-        for (int i = 0; i < critterPrefab.Length;)
-        {
-            names[i] = critterPrefab[i].name;            
-        }
-        
-        dropdownCritter.ClearOptions();
-        dropdownCritter.AddOptions(names);
-    }
-    */
-
-    //public Button playButton;
-    //public Button pauseButton;
 
     void Update()
     {
@@ -81,6 +51,7 @@ public class GameManager: MonoBehaviour
         {
             return;
         }
+
         /*
         // Pause
         if(Input.GetKeyDown(KeyCode.P))
@@ -110,6 +81,7 @@ public class GameManager: MonoBehaviour
             Time.timeScale = 1f;
         }
         */
+
         // Update GUI
         textCrushes.text = $"Crushes: {crushCounter}\n"
                          + $"Crush Combo: {crushComboCounter}\n"
